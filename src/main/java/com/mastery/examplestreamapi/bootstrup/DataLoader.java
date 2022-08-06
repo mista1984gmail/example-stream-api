@@ -16,13 +16,14 @@ import java.util.Set;
 
 @Component
 public class DataLoader {
+    private final long NUMBER_BOOKINGS = 30;
 
     @Bean
     public CommandLineRunner loadDataClient(ClientRepository clientRepository, ProductRepository productRepository, BookingRepository bookingRepository) {
         return (args) -> {
             Faker faker = new Faker();
             long indexForProduct = 1;
-            for (long i = 0; i <= 30; i++) {
+            for (long i = 0; i <= NUMBER_BOOKINGS; i++) {
                 Set<Product>products = new HashSet<>();
                 long indexToIncreaseProduct =0;
                 for (long j = indexForProduct; j <= faker.number().numberBetween(indexForProduct, indexForProduct+10); j++) {
